@@ -1,16 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 const app = express();
-const port = 5000;
-const subcategoryRoute = require("./routes/subcategoryRoute");
-const userRatings = require("./routes/userRatingsRoute");
-const vendors = require("./routes/vendorsRoute");
-const wishlistRoute = require("./routes/wishlistRoute");
+const port = process.env.PORT || 5000;
+
+const subcategoryRoutes = require("./routes/subcategoryRoute");
+const userRatingsRoutes = require("./routes/userRatingsRoute");
+const vendorsRoutes = require("./routes/vendorsRoute");
+const wishlistRoutes = require("./routes/wishlistRoute");
+const productRoutes = require("./routes/productRoute");
 
 mongoose
-  .connect(
-    "mongodb+srv://jumiaClone:nSzefF4cBgxjkT8V@jumiaclone.fphmp2g.mongodb.net/"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("connected to DB");
   })
@@ -20,6 +22,14 @@ mongoose
 
 app.use(express.json());
 
+app.use("/product", productRoutes);
+app.use("/subcategory", subcategoryRoutes);
+app.use("/rating", userRatingsRoutes);
+app.use("/vendor", vendorsRoutes);
+app.use("/wishlist", wishlistRoutes);
+
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(
+    `Server is running in ${process.env.NODE_ENV} on http://localhost:${port}`
+  );
 });
