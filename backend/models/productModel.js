@@ -40,11 +40,7 @@ const productSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    images: [
-      {
-        type: String, // Assuming image paths or URLs
-      },
-    ],
+    images: [{ type: String }], // Assuming image paths or URLs
   },
   { collection: "Product" }
 );
@@ -58,6 +54,7 @@ const productSchema = new mongoose.Schema(
 
 const Product = mongoose.model("Product", productSchema);
 
-module.exports = { Product, 
-  // validate 
+module.exports = {
+  Product,
+  // validate
 };

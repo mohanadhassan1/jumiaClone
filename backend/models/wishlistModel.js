@@ -12,7 +12,7 @@ const wishlistSchema = new mongoose.Schema(
       type: Number, // Assuming user_id is a string, adjust accordingly
       required: true,
     },
-    items: [
+    products: [
       {
         product_id: {
           type: Number,

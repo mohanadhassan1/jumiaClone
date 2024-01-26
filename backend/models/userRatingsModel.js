@@ -17,9 +17,9 @@ const ratingSchema = new mongoose.Schema(
     model: { type: String },
     entityModel: { type: String, enum: ["Product", "Vendor"] },
   },
-  { collection: "userRatings" }
+  { collection: "UserRatings" }
 );
 
-const Rating = mongoose.model("userRatings", ratingSchema);
+const Rating = mongoose.model("UserRatings", ratingSchema);
 
-module.exports = Rating;
+module.exports = { Rating };

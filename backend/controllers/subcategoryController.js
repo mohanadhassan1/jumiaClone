@@ -22,9 +22,11 @@ const createSubCategory = async (req, res) => {
 //reurn all subcategory
 const getAllSubCategory = async (req, res) => {
   try {
-    const subCategory = await Subcategory.find().populate({
-      path: "category_id",
-    });
+    // const subCategory = await Subcategory.find().populate({
+    //   path: "category_id",
+    // });
+
+    const subCategory = await Subcategory.find();
 
     res.json(subCategory);
   } catch (error) {
