@@ -1,5 +1,9 @@
 const CustomerModle = require("../models/Customer");
 const asyncHandler = require("express-async-handler");
+bcrypt = require("bcryptjs");
+var jwt = require('jsonwebtoken');
+
+
 
 const getCustomers = asyncHandler(async (req, res, next) => {
   try {
@@ -33,6 +37,36 @@ const AddCustomer = asyncHandler(async (req, res, next) => {
     res.status(400).json(e);
   }
 });
+
+const login = async (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ message: "Invalid email or password" });
+  }
+  const user = await userModule.findOne({ email });
+  if (!user) {
+    return res.status(401).json({ message: "invalid email or password" });
+  }
+
+ let isValid= await bcrypt.compare(password, user.password);
+
+
+ if (!isValid) {
+   return res.status(401).json({ message: "invalid email or password" });
+  }
+
+  let token = jwt.sign( 
+    {
+      email: user.email,
+      id: user._id
+    },
+    'PASS_word',
+    { expiresIn: "2h" }
+  );
+
+  res.status(200).json({ token });
+};
+
 
 const EditCustomer = asyncHandler(async (req, res, next) => {
   let id = req.params.id;
