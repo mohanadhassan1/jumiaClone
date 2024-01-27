@@ -1,62 +1,41 @@
 const { Rating } = require("../models/userRatingsModel");
+const asyncHandler = require("express-async-handler");
 
-const createUserRating = async (req, res) => {
-  try {
-    const newRating = req.body;
-    const ratingCount = await Rating.countDocuments();
+const createUserRating = asyncHandler(async (req, res) => {
+  const newRating = req.body;
+  const ratingCount = await Rating.countDocuments();
 
-    newRating.rating_id = ratingCount + 1;
-    // Use await to wait for the promise to resolve
-    const createdRating = await Rating.create(newRating);
+  newRating.rating_id = ratingCount + 1;
+  const createdRating = await Rating.create(newRating);
 
-    // Send a success response back to the client
-    res.status(201).json(createdRating);
-  } catch (error) {
-    // Handle errors and send an error response
-    console.error("Error creating rating:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-};
+  res.status(201).json(createdRating);
+});
 
-//return all ratings
-const getAllUserRatings = async (req, res) => {
-  try {
-    const ratings = await Rating.find();
+const getAllUserRatings = asyncHandler(async (req, res) => {
+  const ratings = await Rating.find();
+  res.json(ratings);
+});
 
-    res.json(ratings);
-  } catch (error) {
-    console.error("Error fetching ratings:", error);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-};
-
-//update by id
-const updateUserRatingById = async (req, res) => {
+const updateUserRatingById = asyncHandler(async (req, res) => {
   const id = req.params.id;
   const updates = req.body;
 
-  try {
-    const rating = await Rating.findOne({ rating_id: id });
+  const rating = await Rating.findOne({ rating_id: id });
 
-    if (!rating) {
-      return res.json({ error: "Rating not found" });
-    }
-
-    const updatedRating = await Rating.findOneAndUpdate(
-      { rating_id: id },
-      updates,
-      { new: true }
-    );
-
-    res.json(updatedRating);
-  } catch (error) {
-    console.error("Error updating rating:", error);
-    res.status(500).json({ error: "Internal server error" });
+  if (!rating) {
+    return res.json({ error: "Rating not found" });
   }
-};
 
-//get by id
-const getUserRatingById = async (req, res) => {
+  const updatedRating = await Rating.findOneAndUpdate(
+    { rating_id: id },
+    updates,
+    { new: true }
+  );
+
+  res.json(updatedRating);
+});
+
+const getUserRatingById = asyncHandler(async (req, res) => {
   const id = req.params.id;
   try {
     const foundRating = await Rating.findOne({ rating_id: id });
@@ -67,27 +46,21 @@ const getUserRatingById = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: "Internal server error" });
   }
-};
+});
 
-//delete by id
-const deleteUserRatingById = async (req, res) => {
+const deleteUserRatingById = asyncHandler(async (req, res) => {
   const id = req.params.id;
 
-  try {
-    const deletedRating = await Rating.findOneAndDelete({
-      rating_id: id,
-    });
+  const deletedRating = await Rating.findOneAndDelete({
+    rating_id: id,
+  });
 
-    if (!deletedRating) {
-      return res.status(404).json({ error: "Rating not found" });
-    }
-
-    res.status(200).json({ message: "Rating deleted successfully" });
-  } catch (error) {
-    console.error("Error deleting rating:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+  if (!deletedRating) {
+    return res.status(404).json({ error: "Rating not found" });
   }
-};
+
+  res.status(200).json({ message: "Rating deleted successfully" });
+});
 
 module.exports = {
   createUserRating,

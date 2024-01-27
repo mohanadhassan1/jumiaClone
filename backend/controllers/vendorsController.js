@@ -1,6 +1,10 @@
 const { Vendor } = require("../models/vendorsModel");
+const asyncHandler = require("express-async-handler");
+const jwt = require("jsonwebtoken");
+const bycrpt = require("bcryptjs");
+require("dotenv").config();
 
-const createVendor = async (req, res) => {
+const createVendor = asyncHandler(async (req, res) => {
   try {
     const newVendor = req.body;
     const vendorCount = await Vendor.countDocuments();
@@ -14,9 +18,42 @@ const createVendor = async (req, res) => {
     console.error("Error creating vendor:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
-const getAllVendors = async (req, res) => {
+const loginVendor = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const vendor = await Vendor.findOne({ email });
+
+    if (!vendor) {
+      res.status(401).json("Invalid login credentials");
+    }
+
+    const isValid = await bycrpt.compare(password, vendor.password);
+    const token = jwt.sign(
+      {
+        id: vendor.vendor_id,
+        username: vendor.username,
+        email: vendor.email,
+        role: vendor.role,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "3h" }
+    );
+
+    res.status(200).json({ token: token });
+
+    if (!isValid) {
+      return res.status(401).json({ message: "invalid email or password " });
+    }
+  } catch (error) {
+    console.error("Error during login:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+const getAllVendors = asyncHandler(async (req, res) => {
   try {
     const vendors = await Vendor.find();
 
@@ -25,9 +62,9 @@ const getAllVendors = async (req, res) => {
     console.error("Error fetching vendors:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
-const updateVendorById = async (req, res) => {
+const updateVendorById = asyncHandler(async (req, res) => {
   const id = req.params.id;
   const updates = req.body;
 
@@ -49,9 +86,9 @@ const updateVendorById = async (req, res) => {
     console.error("Error updating vendor:", error);
     res.status(500).json({ error: "Internal server error" });
   }
-};
+});
 
-const getVendorById = async (req, res) => {
+const getVendorById = asyncHandler(async (req, res) => {
   const id = req.params.id;
   try {
     const foundVendor = await Vendor.findOne({ vendor_id: id });
@@ -62,9 +99,9 @@ const getVendorById = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: "Internal server error" });
   }
-};
+});
 
-const deleteVendorById = async (req, res) => {
+const deleteVendorById = asyncHandler(async (req, res) => {
   const id = req.params.id;
 
   try {
@@ -81,7 +118,7 @@ const deleteVendorById = async (req, res) => {
     console.error("Error deleting vendor:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
 module.exports = {
   createVendor,
@@ -89,4 +126,5 @@ module.exports = {
   updateVendorById,
   getVendorById,
   deleteVendorById,
+  loginVendor,
 };

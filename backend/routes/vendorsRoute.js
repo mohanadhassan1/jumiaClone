@@ -6,10 +6,11 @@ const {
   getVendorById,
   deleteVendorById,
   updateVendorById,
+  loginVendor,
 } = require("../controllers/vendorsController");
 
 router.route("/").get(getAllVendors).post(createVendor);
-
+router.route("/login").post(loginVendor);
 router
   .route("/:id")
   .get(getVendorById)

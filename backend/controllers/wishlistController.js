@@ -1,6 +1,7 @@
 const { Wishlist } = require("../models/wishlistModel");
+const asyncHandler = require("express-async-handler");
 
-const createWishlist = async (req, res) => {
+const createWishlist = asyncHandler(async (req, res) => {
   try {
     const newWishlist = req.body;
     const wishlistCount = await Wishlist.countDocuments();
@@ -14,9 +15,9 @@ const createWishlist = async (req, res) => {
     console.error("Error creating wishlist:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
-const getAllWishlists = async (req, res) => {
+const getAllWishlists = asyncHandler(async (req, res) => {
   try {
     const wishlists = await Wishlist.find();
 
@@ -25,9 +26,9 @@ const getAllWishlists = async (req, res) => {
     console.error("Error fetching wishlists:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
-const updateWishlistById = async (req, res) => {
+const updateWishlistById = asyncHandler(async (req, res) => {
   const id = req.params.id;
   const updates = req.body;
 
@@ -49,9 +50,9 @@ const updateWishlistById = async (req, res) => {
     console.error("Error updating wishlist:", error);
     res.status(500).json({ error: "Internal server error" });
   }
-};
+});
 
-const getWishlistById = async (req, res) => {
+const getWishlistById = asyncHandler(async (req, res) => {
   const id = req.params.id;
   try {
     const foundWishlist = await Wishlist.findOne({ wishlist_id: id });
@@ -62,9 +63,9 @@ const getWishlistById = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: "Internal server error" });
   }
-};
+});
 
-const deleteWishlistById = async (req, res) => {
+const deleteWishlistById = asyncHandler(async (req, res) => {
   const id = req.params.id;
 
   try {
@@ -81,7 +82,7 @@ const deleteWishlistById = async (req, res) => {
     console.error("Error deleting wishlist:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
 module.exports = {
   createWishlist,
