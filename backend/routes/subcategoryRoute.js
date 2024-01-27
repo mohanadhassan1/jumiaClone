@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 const express = require("express");
 const router = express.Router();
 const {
@@ -20,4 +17,3 @@ router
   .patch(updateCategoryById);
 
 module.exports = router;
->>>>>>> 7f77555525c21aecccc977c74f3a51fa0c0214b8

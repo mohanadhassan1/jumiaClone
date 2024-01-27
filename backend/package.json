@@ -4,11 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-<<<<<<< HEAD
-    "start": "SET SECRET=this -is-my-jwt-secret&&  nodemon app"
-=======
-    "start": "nodemon --watch app.js"
->>>>>>> 7f77555525c21aecccc977c74f3a51fa0c0214b8
+
+  
+
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
