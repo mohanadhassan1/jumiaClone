@@ -2,13 +2,11 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const adminModel = require("../models/adminModel");
 require("dotenv").config();
-
-// const ProductModel = require('../models/product');
-// const CustomerModel = require("../models/customer");
+const asyncHandler = require("express-async-handler");
 
 // #####################admin ##############################
 
-const register = async (req, res, next) => {
+const register = asyncHandler(async (req, res, next) => {
   let admin = req.body;
   try {
     let newAdmin = await adminModel.create(admin);
@@ -16,8 +14,9 @@ const register = async (req, res, next) => {
   } catch (err) {
     res.status(500).json(err);
   }
-};
-const logIn = async (req, res, next) => {
+});
+
+const logIn = asyncHandler(async (req, res, next) => {
   let { admin_id } = req.params;
   let { password, username } = req.body;
   if (!password || !username) {
@@ -43,13 +42,12 @@ const logIn = async (req, res, next) => {
     { expiresIn: "2h" }
   );
   res.status(200).json({ token });
-};
+});
 
-const updateAdmin = async (req, res, next) => {
+const updateAdmin = asyncHandler(async (req, res, next) => {
   try {
     const { admin_id } = req.params;
     const { firstName, lastName, username, password, email } = req.body;
-    // console.log(adminData)
 
     const updatedAdmin = await adminModel.findOneAndUpdate(
       { admin_id },
@@ -68,16 +66,15 @@ const updateAdmin = async (req, res, next) => {
       username: updatedAdmin.username,
       password: updatedAdmin.password,
     };
-    // updatedAdmin.save()
 
     return res.json(response_data);
   } catch (error) {
     console.error("Error updating category:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
-const deleteAdmin = async (req, res) => {
+const deleteAdmin = asyncHandler(async (req, res) => {
   try {
     const { admin_id } = req.params;
 
@@ -102,7 +99,7 @@ const deleteAdmin = async (req, res) => {
     console.error("Error deleting admin:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
 module.exports = {
   register,

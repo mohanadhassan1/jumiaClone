@@ -1,9 +1,10 @@
 const categoryModel = require("../models/cateogryModel");
 const CategoryModel = require("../models/cateogryModel");
+const asyncHandler = require("express-async-handler");
 
-const addCategory = async (req, res) => {
+const addCategory = asyncHandler(async (req, res) => {
   try {
-    const {category_id, name,  description } = req.body;
+    const { category_id, name, description } = req.body;
 
     if (!name || !category_id) {
       return res.status(400).json({ error: "Invalid category data" });
@@ -14,16 +15,16 @@ const addCategory = async (req, res) => {
         .status(409)
         .json({ error: "Category with this id already exists" });
     }
-    await CategoryModel.create({category_id,name, description });
+    await CategoryModel.create({ category_id, name, description });
 
     return res.status(201).json({ message: "Category added successfully" });
   } catch (error) {
     console.error("Error adding category:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
-const getAllCategories = async (req, res) => {
+const getAllCategories = asyncHandler(async (req, res) => {
   try {
     const categories = await CategoryModel.find();
     const response_data = categories.map((category) => ({
@@ -39,9 +40,9 @@ const getAllCategories = async (req, res) => {
     console.error("Error getting categories:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
-const getCategoryById = async (req, res) => {
+const getCategoryById = asyncHandler(async (req, res) => {
   try {
     const { category_id } = req.params;
 
@@ -62,9 +63,9 @@ const getCategoryById = async (req, res) => {
     console.error("Error getting category by ID:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
-const updateCategory = async (req, res) => {
+const updateCategory = asyncHandler(async (req, res) => {
   try {
     const { category_id } = req.params;
     const { name, description } = req.body;
@@ -74,8 +75,8 @@ const updateCategory = async (req, res) => {
     }
 
     const updatedCategory = await categoryModel.findOneAndUpdate(
-      {  category_id },
-      { $set: { name,description } },
+      { category_id },
+      { $set: { name, description } },
       { new: true }
     );
 
@@ -83,7 +84,7 @@ const updateCategory = async (req, res) => {
       return res.status(404).json({ error: "Category not found" });
     }
     const response_data = {
-    category_id,
+      category_id,
       name: updatedCategory.name,
       description: updatedCategory.description,
     };
@@ -93,14 +94,14 @@ const updateCategory = async (req, res) => {
     console.error("Error updating category:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
-const deleteCategory = async (req, res) => {
+const deleteCategory = asyncHandler(async (req, res) => {
   try {
     const { category_id } = req.params;
 
     const deletedCategory = await categoryModel.findOneAndDelete({
-       category_id,
+      category_id,
     });
 
     if (!deletedCategory) {
@@ -121,7 +122,7 @@ const deleteCategory = async (req, res) => {
     console.error("Error deleting category:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
 module.exports = {
   addCategory,
