@@ -26,9 +26,14 @@ phone_number:{
 },
 address_of_Id: {
 type: [Number],
-// ref : 'Address'
+ref : 'addressModel'
 
-}
+},
+role: {
+  type:'string',
+  enum:["Admin","Vendor","Customer"],
+  default:"Customer",   
+},
 
     
  
