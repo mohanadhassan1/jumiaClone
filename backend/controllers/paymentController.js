@@ -10,6 +10,16 @@ const getPayment = asyncHandler(async (req, res, next) => {
   res.status(200).json({ message: "Success", data: allPayments });
 });
 
+// ================================================== GET By ID ==================================================
+const getPaymentById = asyncHandler(async (req, res, next) => {
+  const id = req.params.id;
+  let paymentById = await paymentById.findOne({ _id: id });
+  if (!paymentById) {
+    return res.status(400).json("No Payment with that ID");
+  }
+  res.status(200).json({ message: "Success", data: paymentById });
+})
+
 // ================================================== POST ==================================================
 const postPayment = asyncHandler(async (req, res, next) => {
   let addPayment = req.body;
@@ -50,4 +60,4 @@ const deletePayment = asyncHandler(async (req, res, next) => {
   }
 });
 
-module.exports = { getPayment, postPayment, patchPayment, deletePayment };
+module.exports = { getPayment, getPaymentById, postPayment, patchPayment, deletePayment };

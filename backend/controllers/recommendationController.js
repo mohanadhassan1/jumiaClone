@@ -12,6 +12,16 @@ const getRecommendation = asyncHandler(async (req, res, next) => {
   res.status(200).json({ message: "Success", data: allRecommendations });
 });
 
+// ================================================== GET By ID ==================================================
+const getRecommendationById = asyncHandler(async (req, res, next) => {
+  const id = req.params.id;
+  let recommendationById = await RecommendationModel.findOne({ _id: id });
+  if (!recommendationById) {
+    return res.status(400).json("No Recommendation with that ID");
+  }
+  res.status(200).json({ message: "Success", data: recommendationById });
+})
+
 // ================================================== POST ==================================================
 const postRecommendation = asyncHandler(async (req, res, next) => {
   let addRecommendation = req.body;
@@ -56,6 +66,7 @@ const deleteRecommendation = asyncHandler(async (req, res, next) => {
 
 module.exports = {
   getRecommendation,
+  getRecommendationById,
   postRecommendation,
   patchRecommendation,
   deleteRecommendation,

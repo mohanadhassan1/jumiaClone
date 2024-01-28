@@ -9,6 +9,16 @@ const getShipment = asyncHandler(async (req, res, next) => {
   res.status(200).json({ message: "Success", data: allShipments });
 });
 
+// ================================================== GET By ID ==================================================
+const getShipmentById = asyncHandler(async (req, res, next) => {
+  const id = req.params.id;
+  let shipmentById = await ShipmentModel.findOne({ _id: id });
+  if (!shipmentById) {
+    return res.status(400).json("No Shipment with that ID");
+  }
+  res.status(200).json({ message: "Success", data: shipmentById });
+});
+
 // ================================================== POST ==================================================
 const postShipment = asyncHandler(async (req, res, next) => {
   let addShipment = req.body;
@@ -50,4 +60,4 @@ const deleteShipment = asyncHandler(async (req, res, next) => {
   }
 });
 
-module.exports = { getShipment, postShipment, patchShipment, deleteShipment };
+module.exports = { getShipment, getShipmentById, postShipment, patchShipment, deleteShipment };

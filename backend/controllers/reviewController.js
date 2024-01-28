@@ -9,6 +9,16 @@ const getReview = asyncHandler(async (req, res, next) => {
   res.status(200).json({ message: "Success", data: allReviews });
 });
 
+// ================================================== GET By ID ==================================================
+const getReviewById = asyncHandler(async (req, res, next) => {
+  const id = req.params.id;
+  let reviewById = await ReviewModel.findOne({ _id: id });
+  if (!reviewById) {
+    return res.status(400).json("No Review with that ID");
+  }
+  res.status(200).json({ message: "Success", data: reviewById });
+});
+
 // ================================================== POST ==================================================
 const postReview = asyncHandler(async (req, res, next) => {
   let addReview = req.body;
@@ -50,4 +60,4 @@ const deleteReview = asyncHandler(async (req, res, next) => {
   }
 });
 
-module.exports = { getReview, postReview, patchReview, deleteReview };
+module.exports = { getReview, getReviewById, postReview, patchReview, deleteReview };
