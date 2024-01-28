@@ -60,8 +60,8 @@ const login = async (req, res, next) => {
       email: user.email,
       id: user._id
     },
-    'PASS_word',
-    { expiresIn: "2h" }
+    process.env.JWT_SECRET,
+    { expiresIn: "3h" }
   );
 
   res.status(200).json({ token });
