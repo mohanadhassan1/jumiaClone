@@ -17,7 +17,7 @@ const register = asyncHandler(async (req, res, next) => {
 });
 
 const logIn = asyncHandler(async (req, res, next) => {
-  let { admin_id } = req.params;
+  // let { admin_id } = req.params;
   let { password, username } = req.body;
   if (!password || !username) {
     return res
@@ -34,7 +34,6 @@ const logIn = asyncHandler(async (req, res, next) => {
   }
   let token = jwt.sign(
     {
-      admin_id,
       username: admin.username,
     },
     process.env.JWT_SECRET,

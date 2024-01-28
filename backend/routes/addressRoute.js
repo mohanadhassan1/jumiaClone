@@ -7,6 +7,10 @@ const {
   updateAddressById,
   deleteAddressById,
 } = require("../controllers/addressController");
+const {
+  adminMiddleware,
+  customerMiddleware,
+} = require("../middlewares/authMiddleware");
 
 // const express = require('express');
 

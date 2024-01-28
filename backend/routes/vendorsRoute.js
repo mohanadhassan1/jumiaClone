@@ -8,8 +8,16 @@ const {
   updateVendorById,
   loginVendor,
 } = require("../controllers/vendorsController");
+const {
+  adminMiddleware,
+  vendorMiddleware,
+  authMiddleware,
+} = require("../middlewares/authMiddleware");
 
-router.route("/").get(getAllVendors).post(createVendor);
+router
+  .route("/")
+  .get(authMiddleware, vendorMiddleware, getAllVendors)
+  .post(createVendor);
 router.route("/login").post(loginVendor);
 router
   .route("/:id")
