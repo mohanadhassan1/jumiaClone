@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const CustomerSchema = mongoose.Schema({
     customer_id: {
@@ -20,6 +21,10 @@ const CustomerSchema = mongoose.Schema({
     required: true
 
 },
+password: {
+  type: "string",
+  required: true
+},  
 phone_number:{
     type: "number",
 
@@ -40,7 +45,12 @@ role: {
 });
 
 
-
+CustomerSchema.pre("save", function(next) {
+  var salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(this.password, salt);
+  this.password = hash;
+  next();
+});
 
 
 const collectionName = 'Customer';
