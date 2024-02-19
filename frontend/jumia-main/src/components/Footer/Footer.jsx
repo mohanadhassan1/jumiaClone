@@ -31,7 +31,7 @@ export default function Footer() {
                                     />
 
                                     <button
-                                        className="mt-1 w-full bg-teal-500 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0"
+                                        className="mt-1 w-full border px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:border-orange-500 hover:text-orange-500 sm:mt-0 sm:w-auto sm:shrink-0 focus-within:ring focus:border-orange-500 focus:ring-orange-500"
                                     >
                                         Sign Up
                                     </button>
