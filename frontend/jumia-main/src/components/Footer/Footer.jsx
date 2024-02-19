@@ -10,7 +10,7 @@ export default function Footer() {
                     <div className="lg:col-span-2 col-span-8">
 
                         <div className="text-teal-600">
-                            <img src="https://group.jumia.com/_nuxt/img/j-group-white.d29b831.svg" class="h-6 lg:h-9"></img>
+                            <img src="https://group.jumia.com/_nuxt/img/j-group-white.d29b831.svg" className="h-6 lg:h-9"></img>
                         </div>
 
                     </div>

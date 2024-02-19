@@ -5,7 +5,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 
 
-export const MySlider = () => {
+const MySlider = () => {
   const swiperElRef = useRef(null);
   const products = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIQO-7kTAvvaep3lI1eRwxXfy-wVqE-5RK0h3rZQUUA9NCgw764sYoeThMrVuJSuXLUY&usqp=CAU",
@@ -33,7 +33,7 @@ export const MySlider = () => {
   }, []);
 
   return (
-    <div style={{margin:"20px"}}>
+    <div className="bg-white gap-4 p-3 mb-3 rounded">
     <Swiper
       ref={swiperElRef}
       modules={[Navigation]}
@@ -43,11 +43,13 @@ export const MySlider = () => {
       
     >
       {products.map((product, index) => (
-        <SwiperSlide key={index} className="transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-200 ...">
-          <img src={product} alt={`Slide ${index + 1}`}  style={{width:"150px",height:"150px",marginLeft:"10px",borderRadius:"10px"}}/>
+        <SwiperSlide key={index} className=" transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-200 ...">
+          <img src={product} alt={`Slide ${index + 1}`}  style={{width:"150px",height:"150px",marginLeft:"50px",borderRadius:"10px"}}/>
         </SwiperSlide>
       ))}
     </Swiper>
     </div>
   );
 };
+
+export default MySlider;

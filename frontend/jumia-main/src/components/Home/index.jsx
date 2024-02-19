@@ -1,9 +1,11 @@
 import React from "react";
-
+import MySlider from "../Slider/Slider";
 const Home = () => {
   return (
     <>
       <div className="container">
+
+        <MySlider />
 
         {/* Ramadan Careem */}
         <div className="flex gap-4 p-3 mb-3 rounded bg-white">
@@ -41,7 +43,7 @@ const Home = () => {
 
         </div>
 
-        
+
         {/* Shop All Your Needs Bar*/}
         <div className="h-16 flex justify-center items-center gap-4 p-3 rounded-t bg-orange-50">
           <h2 className="font-bold text-xl">Shop All Your Needs</h2>
