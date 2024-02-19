@@ -1,11 +1,13 @@
 import { useState } from "react";
+// import { MySlider } from "./components/Slider/Slider";
 
 function App() {
   return (
     <>
-      <div className="bg-orange-600 h-screen flex items-center justify-center">
+      <div className=" h-screen flex items-center justify-center">
         <div className="">main app</div>
       </div>
+      {/* <MySlider></MySlider> */}
     </>
   );
 }
