@@ -1,11 +1,12 @@
-import { useState } from "react";
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <>
-      <div className="bg-orange-600 h-screen flex items-center justify-center">
-        <div className="">main app</div>
-      </div>
+      <Header />
+      <Navbar />
+      <div className="container mx-auto"></div>
     </>
   );
 }
