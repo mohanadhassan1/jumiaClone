@@ -6,7 +6,7 @@ export default function Footer() {
         <>
             <footer className="bg-gray-700">
 
-                <div className="bg-black mx-auto px-4 py-16 sm:px-6 lg:px-8">
+                <div className="bg-gray-900 mx-auto px-4 py-16 sm:px-6 lg:px-8">
 
                     <div className="mt-8 grid grid-cols-8 gap-8 lg:mt-0 lg:grid-cols-8 lg:gap-y-16">
 

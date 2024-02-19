@@ -6,13 +6,12 @@ import Header from "./components/Header/index";
 function App() {
   return (
     <>
-  
-      <div className="bg-orange-600 h-screen items-center justify-center">
-        <Header />
-        <Navbar />
-        <div className="h-full">main app</div>
-        <Footer />
+      <Header />
+      <Navbar />
+      <div className="h-screen flex items-center justify-center">
+        <div className="h-full flex items-center justify-center">main app</div>
       </div>
+      <Footer />
     </>
   );
 }

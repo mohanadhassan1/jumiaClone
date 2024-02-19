@@ -26,7 +26,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between px-20 py-5 rounded items-center bg-white">
+    <nav className="flex justify-between px-20 py-5 rounded items-center bg-white sticky top-0 z-50">
       <img src={logo} width={150} alt="" />
 
       <div className="flex items-center gap-2 ">
