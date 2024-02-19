@@ -95,7 +95,7 @@ const Home = () => {
 
         {/* Shop All Your Needs Bar*/}
         <div className="h-16 flex justify-center items-center gap-4 p-3 rounded-t bg-orange-50">
-          <h2 className="font-bold text-xl">Shop All Your Needs</h2>
+          <h2 className="font-medium text-xl">Shop All Your Needs</h2>
         </div>
 
         {/*Shop All Your Needs 1 */}
@@ -149,7 +149,7 @@ const Home = () => {
 
         {/* Trending Now Bar */}
         <div className="h-16 flex justify-center items-center gap-4 p-3 rounded-t bg-orange-50">
-          <h2 className="font-bold text-xl">Trending Now!</h2>
+          <h2 className="font-medium text-xl">Trending Now!</h2>
         </div>
 
         {/* Trending Now Cards */}
@@ -200,7 +200,7 @@ const Home = () => {
 
         {/* ♡ Proudly Made in Egypt ♡ Bar*/}
         <div className="h-16 flex justify-center items-center gap-4 p-3 rounded-t bg-orange-50">
-          <h2 className="font-bold text-xl">♡ Proudly Made in Egypt ♡</h2>
+          <h2 className="font-medium text-xl">♡ Proudly Made in Egypt ♡</h2>
         </div>
 
         {/* ♡ Proudly Made in Egypt ♡ */}
@@ -216,7 +216,7 @@ const Home = () => {
 
         {/* Best Beauty Offers Bar*/}
         <div className="h-16 flex justify-center items-center gap-4 p-3 rounded-t bg-orange-50">
-          <h2 className="font-bold text-xl">Best Beauty Offers</h2>
+          <h2 className="font-medium text-xl">Best Beauty Offers</h2>
         </div>
 
         {/*Best Beauty Offers */}
@@ -248,7 +248,7 @@ const Home = () => {
 
         {/* Best Home Offers Bar*/}
         <div className="h-16 flex justify-center items-center gap-4 p-3 rounded-t bg-orange-50">
-          <h2 className="font-bold text-xl">Best Home Offers</h2>
+          <h2 className="font-medium text-xl">Best Home Offers</h2>
         </div>
 
         {/*Best Home Offers */}
