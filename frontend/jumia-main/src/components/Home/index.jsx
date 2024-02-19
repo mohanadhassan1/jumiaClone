@@ -153,7 +153,7 @@ const Home = () => {
 
         {/* Best Home Offers Bar*/}
         <div className="h-16 flex justify-center items-center gap-4 p-3 rounded-t bg-orange-50">
-          <h2 className="font-bold text-xl">Best Beauty Offers</h2>
+          <h2 className="font-bold text-xl">Best Home Offers</h2>
         </div>
 
         {/*Best Home Offers */}
