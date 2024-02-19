@@ -5,10 +5,7 @@ const RecommendationModel = require("../models/recommendationModel");
 
 // ================================================== GET ==================================================
 const getRecommendation = asyncHandler(async (req, res, next) => {
-  let allRecommendations = await RecommendationModel.find(
-    {},
-    "recommended_products"
-  );
+  let allRecommendations = await RecommendationModel.find({},"recommended_products");
   res.status(200).json({ message: "Success", data: allRecommendations });
 });
 
