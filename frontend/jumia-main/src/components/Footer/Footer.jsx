@@ -4,78 +4,74 @@ import logo from '../../assets/tab.svg';
 export default function Footer() {
     return (
         <>
-            <footer className="bg-gray-700">
+            <footer className="bg-gray-800 py-8">
+                <div className="container mx-auto lg:px-8 grid grid-cols-8">
 
-                <div className="bg-gray-900 mx-auto px-4 py-16 sm:px-6 lg:px-8">
+                    <div className="lg:col-span-2 col-span-8">
 
-                    <div className="mt-8 grid grid-cols-8 gap-8 lg:mt-0 lg:grid-cols-8 lg:gap-y-16">
-
-                        <div className="lg:col-span-2 col-span-8">
-
-                            <div className="text-teal-600">
-                                {/* <img src={logo} alt="Jumia Logo" /> */}
-                                <img src="https://group.jumia.com/_nuxt/img/j-group-white.d29b831.svg" class="h-6 lg:h-9"></img>
-                            </div>
-
+                        <div className="text-teal-600">
+                            <img src="https://group.jumia.com/_nuxt/img/j-group-white.d29b831.svg" class="h-6 lg:h-9"></img>
                         </div>
 
-                        <div className="lg:col-span-4 col-span-8">
-                            <div className="lg:flex lg:items-end">
-                                <form className="w-9/12">
-                                    <label htmlFor="UserEmail" className="sr-only text-white"> Email </label>
+                    </div>
 
-                                    <div
-                                        className="border-none p-2 sm:flex sm:items-center sm:gap-4"
+                    <div className="lg:col-span-4 col-span-8">
+                        <div className="lg:flex lg:items-end">
+                            <form className="w-9/12">
+                                <label htmlFor="UserEmail" className="sr-only text-white"> Email </label>
+
+                                <div
+                                    className="border-none p-2 sm:flex sm:items-center sm:gap-4"
+                                >
+                                    <input
+                                        type="email"
+                                        id="UserEmail"
+                                        placeholder="john@rhcp.com"
+                                        className="w-full h-10 border-none focus-within:ring focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
+                                    />
+
+                                    <button
+                                        className="mt-1 w-full bg-teal-500 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0"
                                     >
-                                        <input
-                                            type="email"
-                                            id="UserEmail"
-                                            placeholder="john@rhcp.com"
-                                            className="w-full h-10 border-none focus-within:ring focus:border-orange-500 focus:ring-orange-500 sm:text-sm"
-                                        />
-
-                                        <button
-                                            className="mt-1 w-full bg-teal-500 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0"
-                                        >
-                                            Sign Up
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </form>
                         </div>
 
-                        <div className="lg:col-span-2 col-span-8">
+                    </div>
 
-                            <div className="max-w-2xl text-white py-1">
-                                <div className="text-start">
-                                    <h3 className="text-xl mb-3"> Download Jumia Free app </h3>
-                                    <p> Get access to exclusive offers! </p>
-                                    <div className="flex justify-start my-5">
-                                        <div className="flex items-center border w-auto rounded-lg px-4 py-2 mr-2">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" className="w-7 md:w-4" />
-                                            <div className="text-left ml-3">
-                                                <p className='text-xs text-gray-200'>Download on </p>
-                                                <p className="text-sm "> Google Play</p>
-                                            </div>
+                    <div className="lg:col-span-2 col-span-8">
+
+                        <div className="max-w-2xl text-white py-1">
+                            <div className="text-start">
+                                <h3 className="text-xl mb-3"> Download Jumia Free app </h3>
+                                <p> Get access to exclusive offers! </p>
+                                <div className="flex justify-start my-5">
+                                    <div className="flex items-center border w-auto rounded-lg px-4 py-2 mr-2">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" className="w-7 md:w-4" />
+                                        <div className="text-left ml-3">
+                                            <p className='text-xs text-gray-200'>Download on </p>
+                                            <p className="text-sm "> Google Play</p>
                                         </div>
-                                        <div className="flex items-center border w-auto rounded-lg px-4 py-2 mx-2">
-                                            <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" className="w-7 md:w-4" />
-                                            <div className="text-left ml-3">
-                                                <p className='text-xs text-gray-200'>Download on </p>
-                                                <p className="text-sm"> App Store </p>
-                                            </div>
+                                    </div>
+                                    <div className="flex items-center border w-auto rounded-lg px-4 py-2 mx-2">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" className="w-7 md:w-4" />
+                                        <div className="text-left ml-3">
+                                            <p className='text-xs text-gray-200'>Download on </p>
+                                            <p className="text-sm"> App Store </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
+            </footer>
 
-                <div className="bg-gray-700 mx-auto px-4 py-16 sm:px-6 lg:px-8">
+            <footer className="bg-gray-700">
+                <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
 
                     <div className="mt-8 grid grid-cols-8 gap-8 lg:mt-0 lg:gap-y-16">
 
