@@ -6,6 +6,8 @@ import Home from "./components/Home/index";
 // import MySlider from "./components/Slider/Slider";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import HelpMain from "./components/Help";
+import { Slider } from "@material-tailwind/react";
 
 function App() {
   return (
@@ -13,8 +15,10 @@ function App() {
       <Provider store={store}>
         <Header />
         <Navbar />
+        {/* <HelpMain /> */}
         <div className="h-full flex items-center justify-center">
           <Home />
+          {/* <Slider /> */}
         </div>
         <Footer />
       </Provider>

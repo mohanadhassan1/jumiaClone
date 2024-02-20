@@ -35,8 +35,8 @@ const Navbar = () => {
             <div className="relative">
               <FaSearch className="absolute top-1/2 left-10 transform -translate-y-1/2 text-gray-400" />
               <input
-                className="ml-8 pl-10 outline rounded w-96 h-10 "
-                type="text"
+                className="ml-8 pl-10 pr-2 outline rounded w-96 h-10 "
+                type="search"
                 name="search"
                 id="search"
                 placeholder="Search product, brands, and categories"
@@ -81,8 +81,9 @@ const Navbar = () => {
 
                 {/* Account Dropdown menu */}
                 <div
-                  className={`absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${isAccountMenuOpen ? "block" : "hidden"
-                    }`}
+                  className={`absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
+                    isAccountMenuOpen ? "block" : "hidden"
+                  }`}
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="account-menu-button"
@@ -178,8 +179,9 @@ const Navbar = () => {
 
                 {/* Help Dropdown menu */}
                 <div
-                  className={`absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${isHelpMenuOpen ? "block" : "hidden"
-                    }`}
+                  className={`absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
+                    isHelpMenuOpen ? "block" : "hidden"
+                  }`}
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="help-menu-button"
